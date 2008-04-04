@@ -1,0 +1,61 @@
+--- rubberband-1.0.1/src/Window.h.gcc43	2007-12-13 17:15:03.000000000 -0500
++++ rubberband-1.0.1/src/Window.h	2008-03-30 22:20:04.000000000 -0400
+@@ -16,6 +16,7 @@
+ #define _RUBBERBAND_WINDOW_H_
+ 
+ #include <cmath>
++#include <cstdlib>
+ #include <iostream>
+ #include <map>
+ 
+--- rubberband-1.0.1/src/Thread.cpp.gcc43	2007-12-13 17:15:03.000000000 -0500
++++ rubberband-1.0.1/src/Thread.cpp	2008-03-30 22:26:25.000000000 -0400
+@@ -14,6 +14,7 @@
+ 
+ #include "Thread.h"
+ 
++#include <cstdlib>
+ #include <iostream>
+ 
+ #include <sys/time.h>
+--- rubberband-1.0.1/src/FFT.cpp.gcc43	2007-12-13 17:15:03.000000000 -0500
++++ rubberband-1.0.1/src/FFT.cpp	2008-03-30 22:25:59.000000000 -0400
+@@ -22,6 +22,7 @@
+ #include <iostream>
+ #include <map>
+ #include <cstdio>
++#include <cstdlib>
+ #include <vector>
+ 
+ namespace RubberBand {
+--- rubberband-1.0.1/src/RingBuffer.h.gcc43	2007-12-13 17:15:03.000000000 -0500
++++ rubberband-1.0.1/src/RingBuffer.h	2008-03-30 22:25:17.000000000 -0400
+@@ -15,6 +15,7 @@
+ #ifndef _RUBBERBAND_RINGBUFFER_H_
+ #define _RUBBERBAND_RINGBUFFER_H_
+ 
++#include <cstring>
+ #include <sys/types.h>
+ 
+ #ifndef _WIN32
+--- rubberband-1.0.1/src/StretchCalculator.cpp.gcc43	2007-12-13 17:15:03.000000000 -0500
++++ rubberband-1.0.1/src/StretchCalculator.cpp	2008-03-30 22:21:44.000000000 -0400
+@@ -14,6 +14,7 @@
+ 
+ #include "StretchCalculator.h"
+ 
++#include <algorithm>
+ #include <math.h>
+ #include <iostream>
+ #include <deque>
+--- rubberband-1.0.1/src/main.cpp.gcc43	2007-12-13 17:15:03.000000000 -0500
++++ rubberband-1.0.1/src/main.cpp	2008-03-30 22:26:57.000000000 -0400
+@@ -17,6 +17,8 @@
+ #include <iostream>
+ #include <sndfile.h>
+ #include <cmath>
++#include <cstdlib>
++#include <cstring>
+ #include <sys/time.h>
+ #include <time.h>
+ #include "sysutils.h"
