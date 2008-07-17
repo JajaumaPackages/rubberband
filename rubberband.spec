@@ -1,5 +1,5 @@
 Name:           rubberband
-Version:        1.0.1
+Version:        1.2
 Release:        1%{?dist}
 Summary:        Audio time-stretching and pitch-shifting library
 
@@ -7,13 +7,13 @@ Group:          System Environment/Libraries
 License:        GPLv2+
 URL:            http://www.breakfastquay.com/rubberband/
 Source0:        http://www.breakfastquay.com/rubberband/files/rubberband-%{version}.tar.bz2
-Patch0:         rubberband-1.0.1-gcc43.patch
-Patch1:         rubberband-1.0.1-destdir.patch
+Patch0:         rubberband-1.2-gcc43.patch
+Patch1:         rubberband-1.2-mk.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  fftw-devel libsamplerate-devel libsndfile-devel
 BuildRequires:  ladspa-devel vamp-plugin-sdk-devel
-#Requires:       
+Requires:       ladspa
 
 %description
 Rubber Band is a library and utility program that permits you to change the
@@ -34,7 +34,7 @@ developing applications that use %{name}.
 %prep
 %setup -q
 %patch0 -p1 -b .gcc43
-%patch1 -p1 -b .destdir
+%patch1 -p1 -b .mk
 
 
 %build
@@ -63,6 +63,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_bindir}/rubberband
 %{_libdir}/*.so.*
 %{_libdir}/ladspa/ladspa-rubberband.*
+%{_datadir}/ladspa/rdf/ladspa-rubberband.rdf
 %{_libdir}/vamp/vamp-rubberband.*
 
 %files devel
@@ -75,6 +76,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Jul 17 2008 Michel Alexandre Salim <salimma@fedoraproject.org> - 1.2-1
+- Update to 1.2
+
 * Sun Mar 30 2008 Michel Salim <michel.sylvan@gmail.com> - 1.0.1-1
 - Initial package
 
