@@ -1,6 +1,6 @@
 Name:           rubberband
 Version:        1.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Audio time-stretching and pitch-shifting library
 
 Group:          System Environment/Libraries
@@ -76,6 +76,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Dec 14 2008 Michel Salim <salimma@fedoraproject.org> - 1.2-2
+- Rebuild for vamp-plugins-sdk-2.0
+
 * Thu Jul 17 2008 Michel Alexandre Salim <salimma@fedoraproject.org> - 1.2-1
 - Update to 1.2
 
