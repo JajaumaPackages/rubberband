@@ -1,6 +1,6 @@
 Name:           rubberband
 Version:        1.2
-Release:        2%{?dist}
+Release:        3%{?dist}
 Summary:        Audio time-stretching and pitch-shifting library
 
 Group:          System Environment/Libraries
@@ -8,7 +8,8 @@ License:        GPLv2+
 URL:            http://www.breakfastquay.com/rubberband/
 Source0:        http://www.breakfastquay.com/rubberband/files/rubberband-%{version}.tar.bz2
 Patch0:         rubberband-1.2-gcc43.patch
-Patch1:         rubberband-1.2-mk.patch
+Patch1:         rubberband-1.2-gcc44.patch
+Patch2:         rubberband-1.2-mk.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  fftw-devel libsamplerate-devel libsndfile-devel
@@ -34,7 +35,8 @@ developing applications that use %{name}.
 %prep
 %setup -q
 %patch0 -p1 -b .gcc43
-%patch1 -p1 -b .mk
+%patch1 -p1 -b .gcc44
+%patch2 -p1 -b .mk
 
 
 %build
@@ -76,6 +78,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Feb  8 2009 Michel Salim <salimma@fedoraproject.org> - 1.2-3
+- Fix compilation problem with GCC 4.4
+
 * Sun Dec 14 2008 Michel Salim <salimma@fedoraproject.org> - 1.2-2
 - Rebuild for vamp-plugins-sdk-2.0
 
