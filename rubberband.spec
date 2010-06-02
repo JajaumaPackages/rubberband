@@ -1,15 +1,14 @@
 Name:           rubberband
-Version:        1.2
-Release:        5%{?dist}
+Version:        1.5.0
+Release:        1%{?dist}
 Summary:        Audio time-stretching and pitch-shifting library
 
 Group:          System Environment/Libraries
 License:        GPLv2+
 URL:            http://www.breakfastquay.com/rubberband/
 Source0:        http://www.breakfastquay.com/rubberband/files/rubberband-%{version}.tar.bz2
-Patch0:         rubberband-1.2-gcc43.patch
-Patch1:         rubberband-1.2-gcc44.patch
-Patch2:         rubberband-1.2-mk.patch
+Patch0:         rubberband-1.5.0-gcc44.patch
+Patch1:         rubberband-1.5.0-mk.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  fftw-devel libsamplerate-devel libsndfile-devel
@@ -34,9 +33,8 @@ developing applications that use %{name}.
 
 %prep
 %setup -q
-%patch0 -p1 -b .gcc43
-%patch1 -p1 -b .gcc44
-%patch2 -p1 -b .mk
+%patch0 -p1 -b .gcc44
+%patch1 -p1 -b .mk
 
 
 %build
@@ -48,7 +46,7 @@ make %{?_smp_mflags}
 rm -rf $RPM_BUILD_ROOT
 make install DESTDIR=$RPM_BUILD_ROOT
 find $RPM_BUILD_ROOT -name '*.la' -exec rm -f {} ';'
-
+rm -rf $RPM_BUILD_ROOT%{_libdir}/*.a
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -61,7 +59,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(-,root,root,-)
-%doc COPYING README
+%doc COPYING README.txt
 %{_bindir}/rubberband
 %{_libdir}/*.so.*
 %{_libdir}/ladspa/ladspa-rubberband.*
@@ -72,12 +70,15 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root,-)
 %doc
 %{_includedir}/*
-%{_libdir}/*.a
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/rubberband.pc
 
 
 %changelog
+* Wed Jun  2 2010 Tom "spot" Callaway <tcallawa@redhat.com> - 1.5.0-1
+- update to 1.5.0
+- disable static libs
+
 * Sun Jul 26 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.2-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
 
