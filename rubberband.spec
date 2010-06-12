@@ -6,7 +6,7 @@ Summary:        Audio time-stretching and pitch-shifting library
 Group:          System Environment/Libraries
 License:        GPLv2+
 URL:            http://www.breakfastquay.com/rubberband/
-Source0:        http://www.breakfastquay.com/rubberband/files/rubberband-%{version}.tar.bz2
+Source0:        http://code.breakfastquay.com/attachments/download/1/rubberband-1.5.0.tar.bz2
 Patch0:         rubberband-1.5.0-gcc44.patch
 Patch1:         rubberband-1.5.0-mk.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
