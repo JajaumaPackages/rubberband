@@ -1,14 +1,18 @@
 Name:           rubberband
 Version:        1.5.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Audio time-stretching and pitch-shifting library
 
 Group:          System Environment/Libraries
 License:        GPLv2+
 URL:            http://www.breakfastquay.com/rubberband/
 Source0:        http://code.breakfastquay.com/attachments/download/1/rubberband-1.5.0.tar.bz2
-Patch0:         rubberband-1.5.0-gcc44.patch
-Patch1:         rubberband-1.5.0-mk.patch
+Patch0:         %{name}-1.5.0-gcc44.patch
+Patch1:         %{name}-1.5.0-mk.patch
+# incorrect version in configure.ac (harmless) and .pc.in (could be bad
+# if a consumer strictly requires 1.5.0 functionality);
+# e-mailed to author
+Patch2:		%{name}-1.5.0-fix_ver.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  fftw-devel libsamplerate-devel libsndfile-devel
@@ -35,6 +39,7 @@ developing applications that use %{name}.
 %setup -q
 %patch0 -p1 -b .gcc44
 %patch1 -p1 -b .mk
+%patch2 -p1 -b .fix_ver
 
 
 %build
@@ -75,6 +80,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sat Jul  3 2010 Michel Salim <salimma@fedoraproject.org> - 1.5.0-2
+- Fixed pkg-config version declaration
+
 * Wed Jun  2 2010 Tom "spot" Callaway <tcallawa@redhat.com> - 1.5.0-1
 - update to 1.5.0
 - disable static libs
