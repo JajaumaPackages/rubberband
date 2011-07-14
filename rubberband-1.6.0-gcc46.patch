@@ -1,0 +1,10 @@
+--- rubberband-1.6.0/rubberband/RubberBandStretcher.h.gcc46	2011-03-19 16:01:07.000000000 +0100
++++ rubberband-1.6.0/rubberband/RubberBandStretcher.h	2011-07-14 15:29:29.756201539 +0200
+@@ -21,6 +21,7 @@
+ 
+ #include <vector>
+ #include <map>
++#include <cstddef>
+ 
+ /**
+  * @mainpage RubberBand

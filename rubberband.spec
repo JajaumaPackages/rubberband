@@ -1,18 +1,18 @@
 Name:           rubberband
-Version:        1.5.0
-Release:        3%{?dist}
+Version:        1.6.0
+Release:        1%{?dist}
 Summary:        Audio time-stretching and pitch-shifting library
 
 Group:          System Environment/Libraries
 License:        GPLv2+
 URL:            http://www.breakfastquay.com/rubberband/
-Source0:        http://code.breakfastquay.com/attachments/download/1/rubberband-1.5.0.tar.bz2
-Patch0:         %{name}-1.5.0-gcc44.patch
+Source0:        http://code.breakfastquay.com/attachments/download/16/rubberband-%{version}.tar.bz2
+Patch0:         %{name}-1.6.0-gcc46.patch
 Patch1:         %{name}-1.5.0-mk.patch
 # incorrect version in configure.ac (harmless) and .pc.in (could be bad
 # if a consumer strictly requires 1.5.0 functionality);
 # e-mailed to author
-Patch2:		%{name}-1.5.0-fix_ver.patch
+Patch2:		%{name}-1.6.0-fix_ver.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  fftw-devel libsamplerate-devel libsndfile-devel
@@ -37,9 +37,10 @@ developing applications that use %{name}.
 
 %prep
 %setup -q
-%patch0 -p1 -b .gcc44
+%patch0 -p1 -b .gcc46
 %patch1 -p1 -b .mk
 %patch2 -p1 -b .fix_ver
+sed -i 's|{exec_prefix}/lib|{exec_prefix}/%{_lib}|' rubberband.pc.in
 
 
 %build
@@ -80,6 +81,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Thu Jul 14 2011 Michel Salim <salimma@fedoraproject.org> - 1.6.0-1
+- Update to 1.6.0
+
 * Wed Feb 09 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.5.0-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
 
