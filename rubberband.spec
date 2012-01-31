@@ -11,7 +11,7 @@ Patch0:         %{name}-1.5.0-mk.patch
 # incorrect version in configure.ac (harmless) and .pc.in (could be bad
 # if a consumer strictly requires 1.5.0 functionality);
 # e-mailed to author
-Patch1:		%{name}-1.6.0-fix_ver.patch
+Patch1:         %{name}-1.7.0-fix_ver.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 BuildRequires:  fftw-devel libsamplerate-devel libsndfile-devel
@@ -72,7 +72,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(-,root,root,-)
-%doc
+%doc CHANGELOG
 %{_includedir}/*
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/rubberband.pc
