@@ -1,6 +1,6 @@
 Name:           rubberband
 Version:        1.7.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Audio time-stretching and pitch-shifting library
 
 Group:          System Environment/Libraries
@@ -79,6 +79,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Tue Feb 28 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 1.7.0-2
+- Rebuilt for c++ ABI breakage
+
 * Tue Jan 31 2012 Michel Salim <salimma@fedoraproject.org> - 1.7.0-1
 - Update to 1.7.0
 
